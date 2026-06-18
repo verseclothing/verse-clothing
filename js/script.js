@@ -1,1 +1,1 @@
-console.log("Verse Clothing Co.");
+console.log("Verse Clothing Co. Loaded");
