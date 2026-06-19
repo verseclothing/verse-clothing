@@ -212,3 +212,42 @@ background:#111;
     color:#bdbdbd;
     line-height:26px;
 }
+.footer{
+    padding:60px 8%;
+    text-align:center;
+    background:#050505;
+    margin-top:80px;
+}
+
+.footer h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:42px;
+    letter-spacing:3px;
+}
+
+.footer p{
+    color:#aaa;
+    margin:15px 0;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    opacity:.7;
+}
+
+.copyright{
+    font-size:14px;
+    color:#666;
+}
