@@ -16,7 +16,7 @@ justify-content:space-between;
 align-items:center;
 padding:22px 8%;
 position:fixed;
-top:0;
+top:36px;
 width:100%;
 background:rgba(10,10,10,.9);
 backdrop-filter:blur(10px);
