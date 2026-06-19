@@ -1,57 +1,74 @@
-function addToCart(name, price){
+function addToCart(name, price) {
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-cart.push({
-name: name,
-price: price
-});
+    cart.push({
+        name: name,
+        price: price
+    });
 
-localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-document.getElementById("cart-count").innerText = cart.length;
+    updateCartCount();
 
-alert("✅ Product Added to Cart");
+    alert("✅ Product Added to Cart");
+
+}
+
+function updateCartCount() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let count = document.getElementById("cart-count");
+
+    if (count) {
+        count.innerText = cart.length;
+    }
 
 }
 
-window.onload = function(){
+function loadCart() {
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let count = document.getElementById("cart-count");
+    let cartItems = document.getElementById("cart-items");
+    let total = document.getElementById("cart-total");
 
-if(count){
-count.innerText = cart.length;
-}
+    if (!cartItems || !total) return;
 
-}
-function loadCart(){
+    cartItems.innerHTML = "";
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let grandTotal = 0;
 
-let cartItems = document.getElementById("cart-items");
-let total = document.getElementById("cart-total");
+    if (cart.length === 0) {
 
-if(!cartItems) return;
+        cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        total.innerText = "Total: ₹0";
+        return;
 
-cartItems.innerHTML = "";
+    }
 
-let grandTotal = 0;
+    cart.forEach((item) => {
 
-cart.forEach((item,index)=>{
+        grandTotal += item.price;
 
-grandTotal += item.price;
+        cartItems.innerHTML += `
+            <div class="card" style="margin-bottom:20px;padding:20px;">
+                <h3>${item.name}</h3>
+                <p>₹${item.price}</p>
+            </div>
+        `;
 
-cartItems.innerHTML += `
-<div class="card" style="margin-bottom:20px;">
-    <h3>${item.name}</h3>
-    <p>₹${item.price}</p>
-</div>
-`;
+    });
 
-});
-
-total.innerText = "Total: ₹" + grandTotal;
+    total.innerText = "Total: ₹" + grandTotal;
 
 }
+
+window.onload = function () {
+
+    updateCartCount();
+
+    loadCart();
+
+};
