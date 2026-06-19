@@ -48,7 +48,7 @@ function loadCart() {
 
     }
 
-    cart.forEach((item) => {
+    cart.forEach((item, index) => {
 
         grandTotal += item.price;
 
