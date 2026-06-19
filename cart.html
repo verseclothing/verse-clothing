@@ -35,7 +35,30 @@ VERSE
 <h1>Your Cart</h1>
 
 <p>Complete your details to place your order.</p>
+<form class="checkout-form">
 
+<input type="text" placeholder="Full Name" required>
+
+<input type="tel" placeholder="Mobile Number" required>
+
+<textarea placeholder="Full Address" rows="4" required></textarea>
+
+<input type="text" placeholder="PIN Code" required>
+
+<select required>
+<option selected disabled>Select Size</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<button type="button" class="btn">
+Copy Order Details
+</button>
+
+</form>
 </section>
 
 <script src="js/script.js"></script>
