@@ -251,3 +251,14 @@ background:#111;
     font-size:14px;
     color:#666;
 }
+.announcement{
+    background:#ffffff;
+    color:#000;
+    padding:8px 0;
+    font-size:14px;
+    font-weight:600;
+}
+
+.announcement marquee{
+    letter-spacing:1px;
+}
