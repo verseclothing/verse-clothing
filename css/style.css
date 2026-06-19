@@ -103,3 +103,16 @@ font-size:24px;
 color:#888;
 background:#111;
 }
+.image-box{
+    width:420px;
+    height:520px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
