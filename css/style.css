@@ -347,3 +347,11 @@ h1{
 }
 
 }
+#cart-items{
+    margin:30px 0;
+}
+
+#cart-total{
+    margin-bottom:30px;
+    font-size:24px;
+}
