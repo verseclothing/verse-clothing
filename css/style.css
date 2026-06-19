@@ -50,7 +50,7 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 8%;
+padding:140px 8% 80px;
 }
 
 .left{
@@ -117,7 +117,7 @@ background:#111;
     display:block;
 }
 .new-arrivals{
-    padding:80px 8%;
+    padding:120px 8% 80px;
 }
 
 .new-arrivals h2{
@@ -295,4 +295,55 @@ background:#111;
 }
 .cart-page{
     padding:180px 8% 80px;
+}
+@media (max-width:768px){
+
+.navbar{
+    padding:15px 5%;
+}
+
+nav{
+    display:none;
+}
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+    padding:140px 5% 60px;
+}
+
+.left{
+    max-width:100%;
+}
+
+h1{
+    font-size:58px;
+    line-height:58px;
+}
+
+.image-box{
+    width:100%;
+    max-width:320px;
+    height:auto;
+    margin-top:40px;
+}
+
+.image-box img{
+    width:100%;
+    height:auto;
+}
+
+.products{
+    justify-content:center;
+}
+
+.card{
+    width:100%;
+    max-width:340px;
+}
+
+.cart-page{
+    padding:150px 5% 80px;
+}
+
 }
