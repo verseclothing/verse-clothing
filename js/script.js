@@ -53,11 +53,22 @@ function loadCart() {
         grandTotal += item.price;
 
         cartItems.innerHTML += `
-            <div class="card" style="margin-bottom:20px;padding:20px;">
-                <h3>${item.name}</h3>
-                <p>₹${item.price}</p>
-            </div>
-        `;
+<div class="card" style="margin-bottom:20px;padding:20px;">
+
+<h3>${item.name}</h3>
+
+<p>₹${item.price}</p>
+
+<button
+class="buy-btn"
+onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</div>
+`;
 
     });
 
@@ -72,3 +83,17 @@ window.onload = function () {
     loadCart();
 
 };
+
+function removeItem(index){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.splice(index,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+updateCartCount();
+
+loadCart();
+
+}
