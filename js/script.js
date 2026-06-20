@@ -1,18 +1,26 @@
+localStorage.clear();
 function addToCart(name, price) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-        name: name,
-        price: price
-    });
+    // Agar product pehle se hai to quantity badhao
+    let existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
 
     alert("✅ Product Added to Cart");
-
 }
 
 function updateCartCount() {
@@ -22,7 +30,14 @@ function updateCartCount() {
     let count = document.getElementById("cart-count");
 
     if (count) {
-        count.innerText = cart.length;
+
+        let totalQty = 0;
+
+        cart.forEach(item => {
+            totalQty += item.qty;
+        });
+
+        count.innerText = totalQty;
     }
 
 }
@@ -44,36 +59,42 @@ function loadCart() {
 
         cartItems.innerHTML = "<p>Your cart is empty.</p>";
         total.innerText = "Total: ₹0";
-        return;
 
+        return;
     }
 
     cart.forEach((item, index) => {
 
-        grandTotal += item.price;
+        grandTotal += item.price * item.qty;
 
         cartItems.innerHTML += `
-<div class="card" style="margin-bottom:20px;padding:20px;">
+        <div class="card" style="margin-bottom:20px;padding:20px;">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+            <p>Quantity: ${item.qty}</p>
 
-<h3>${item.name}</h3>
-
-<p>₹${item.price}</p>
-
-<button
-class="buy-btn"
-onclick="removeItem(${index})">
-
-Remove
-
-</button>
-
-</div>
-`;
+            <button class="buy-btn" onclick="removeItem(${index})">
+                Remove
+            </button>
+        </div>
+        `;
 
     });
 
     total.innerText = "Total: ₹" + grandTotal;
+}
 
+function removeItem(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    loadCart();
 }
 
 window.onload = function () {
@@ -83,17 +104,3 @@ window.onload = function () {
     loadCart();
 
 };
-
-function removeItem(index){
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-cart.splice(index,1);
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-updateCartCount();
-
-loadCart();
-
-}
